@@ -1,15 +1,14 @@
-/**
- * Created by 14486 on 2019/4/2.
- */
 /*
-* 队列 (jq动画队列)
-*   先进先出(同样借助于数组)
-*   功能:
-*       入队:enqueue
-*       出队:dequeue
-*       返回列首数据但不删除: first()
-*       清空: clear
-*       长度: size*/
+Created by 14486 on 2019/9/1.
+队列 (jq动画队列) 先进先出
+   先进先出(同样借助于数组)
+   功能:
+       入队:enqueue
+       出队:dequeue
+       返回列首数据但不删除: first()
+       清空: clear
+       长度: size
+*/
 //基础队列类
 let Queue = (function(){
     let symbol = Symbol();
@@ -97,4 +96,3 @@ Aq("#wrap")
     .animate({height:200},1000)
     .animate({top:200},2000)
 ;
-// 优先队列
