@@ -37,6 +37,8 @@ let Queue = (function(){
         }
     }
 })();
+// 模仿jQuery动画队列的实现
+
 let Aq = (function(){
     //继承Queue
     class _Queue extends Queue{
