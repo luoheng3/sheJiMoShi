@@ -1,48 +1,7 @@
 /**
  * Created by 14486 on 2019/4/3.
  */
-// 优先队列
-let Queue = (function(){
-    let symbol = Symbol();
-    class Fn{
-        constructor(el,id){
-            this.el = el;
-            this.id = id;
-        }
-    }
-    return class{
-        constructor(){
-            this[symbol] = [];
-        }
-        enqueue(el,id){
-            let node = new Fn(el,id);
-            let i = 0;
-            while( i < this.size()){
-                if(this[symbol][i].id<id){
-                    break;
-                }
-                i++;
-            }
-            this[symbol].splice(i,0,node);
-        }
-        dequeue(){
-            return this[symbol].shift().el;
-        }
-        first(){
-            return this[symbol][0];
-        }
-        clear(){
-            this[symbol] = [];
-        }
-        size(){
-            return this[symbol].length;
-        }
-        print(){
-            while (this.size())
-                console.log( this.dequeue() );
-        }
-    }
-})();
+
 let queue = new Queue();
 queue.enqueue("罗恒",2);
 queue.enqueue("范雨菲",5);
