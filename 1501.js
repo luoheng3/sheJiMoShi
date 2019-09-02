@@ -77,7 +77,7 @@ let HashTab = (function () {
             num+=item.charCodeAt(0);
         });
         // 需要解决问题  afei 和 feia重复 数组长度过长( 用% )
-        // 用链表解决
+        // 用链表解决 
         return num;
     }
     return class{

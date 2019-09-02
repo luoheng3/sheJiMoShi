@@ -1,13 +1,13 @@
 /**
- * Created by 14486 on 2019/4/4.
+ * Created by 14486 on 2019/9/2.
  */
 /*
-二叉搜索树
-    左侧存储比父级小的数,右侧存储比父级打的值
-        遍历
-            中序遍历 先序遍历 后序遍历
+ 二叉搜索树
+ 左侧存储比父级小的数,右侧存储比父级打的值
+ 遍历
+ 中序遍历 先序遍历 后序遍历
 
-*/
+ */
 let binarySearchTree = (function () {
     let root = Symbol();
     class Node{
@@ -159,16 +159,3 @@ let binarySearchTree = (function () {
     }
 })();
 let tree = new binarySearchTree();
-tree.insert(20);
-tree.insert(10);
-tree.insert(30);
-tree.insert(40);
-console.log(tree);
-console.log(tree.getMin());
-console.log(tree.getMax());
-console.log(tree.has(30));
-console.log(tree.has(60));
-tree.delete(40);
-tree.delete(30);
-tree.delete(10);
-console.log(tree);
