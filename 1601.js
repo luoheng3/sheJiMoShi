@@ -3,11 +3,17 @@
  */
 /*
  二叉搜索树
- 左侧存储比父级小的数,右侧存储比父级打的值
+    左侧存储比父级小的数,右侧存储比父级大的值
+    当数据量大的时候 你要查找这个数据存不存在,性能就会很好,
+    一下可以砍掉一半;
  遍历
- 中序遍历 先序遍历 后序遍历
-
- */
+    中序遍历
+        以根节点为基点 左 中 右 进行遍历
+    先序遍历
+        中 左 右 根节点在中间 就是中序 在前面就是先序
+    后序遍历
+        左 右 中
+*/
 let binarySearchTree = (function () {
     let root = Symbol();
     class Node{
@@ -17,7 +23,7 @@ let binarySearchTree = (function () {
             this.right = null;
         }
     }
-    // 递归判断
+    // insert插入值判断的递归函数
     function fn(root,node) {
         // 判断在左侧还是右侧
         if(node.key<root.key){
@@ -39,10 +45,10 @@ let binarySearchTree = (function () {
     }
     // 用于中序遍历的递归函数  左中右
     function middle(root,arr) {
-        if(!root) return;
-        middle(root.left,arr);
+        if(!root) return; // 首先应该判断root存不存在 不存在就直接返回
+        middle(root.left,arr); // 对于每一个左树,他和根节点一样满足一样的规则;
         arr.push(root.key);
-        middle(root.right,arr);
+        middle(root.right,arr);  // 对于每一个右 树,他和根节点一样满足一样的规则;
     }
     // 先序遍历的递归函数 中 左 右
     function first(root,arr) {
@@ -98,7 +104,7 @@ let binarySearchTree = (function () {
             }
             // 都有
             if(root.left && root.right){
-                // 找到右侧最小值
+                // 找到右侧最小值(绝对可行) 或者左侧最大值
                 let minNode = getMin(root.right);
                 root.key = minNode;
                 root.right = remove(root.right,minNode);
@@ -154,6 +160,57 @@ let binarySearchTree = (function () {
             let arr = [];
             let r = this[root];
             middle(r,arr);
+            return arr;
+        }
+        //
+        delete1 (key){ // 自己写的删除节点
+            // 1: 找到key节点对应的根节点
+            let root1 = this[symbol];
+            f2(root1,key);
+            if (root.data === key){
+                this[symbol]=null;
+                return;
+            }
+            function f2(root1,key) {
+                if(root1.left){
+                    if(root1.left.data === key){
+                        root1.left = null;
+                        return;
+                    }else{
+                        f2(root1.left,key);
+                    }
+                }
+                if(root1.right){
+                    if(root1.right.data === key){
+                        root1.right = null;
+                        return;
+                    }else{
+                        f2(root1.right,key);
+                    }
+                }
+
+            }
+        }
+        print (){ // 我的中序遍历
+            let arr = [];
+            function fn(root) {
+                if(root.left){
+                    if(root.left.left!==undefined || root.left.right!==undefined){
+                        fn(root.left);
+                    }else{
+                        arr.push(root.left);
+                    }
+                }
+                arr.push(root.data);
+                if(root.right){
+                    if(root.right.right!==undefined || root.right.left!==undefined){
+                        fn(root.right);
+                    }else{
+                        arr.push(root.left);
+                    }
+                }
+            }
+            fn(this[symbol]);
             return arr;
         }
     }

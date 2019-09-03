@@ -109,5 +109,9 @@ let LinkList = (function () {
     }
 })();
 let link = new LinkList();
+link.append("罗恒");
+link.append("范雨菲");
+link.append("廖静");
+console.log(link);
 // 双向链表 有next()指向下一个  也有prev指向上一个
 // 循环链表 末尾指向第一个也就是链头
